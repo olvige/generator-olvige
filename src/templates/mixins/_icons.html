@@ -1,0 +1,13 @@
+{% macro icon(i) %}
+<svg class="s-icon s-icon-{{i}}">
+  <use xlink:href="img/sprite.svg#{{i}}"></use>
+</svg>
+{% endmacro %}
+
+{% macro img(i) %}
+<img class="s-img s-img-{{i}}" src="img/sprite.svg#{{i}}" alt="{{i}}">
+{% endmacro %}
+
+{% macro bg(i) %}
+<span class="s-bg s-bg-{{i}}" style="background-image: url(img/sprite.svg#{{i}});"></span>
+{% endmacro %}

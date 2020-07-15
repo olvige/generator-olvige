@@ -1,0 +1,16 @@
+{% set title = "Test page" %}
+
+{% extends "layouts/_layout.html" %}
+
+{% block content %}
+
+  {% include "partials/_part.html" %}
+
+  {% import "data/_data.html" as data %}
+  <ul>
+    {% for i in data.list %}
+    <li>{{ i }}</li>
+    {% endfor %}
+  </ul>
+
+{% endblock %}
