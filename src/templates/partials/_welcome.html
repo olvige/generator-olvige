@@ -1,0 +1,13 @@
+{% import "data/_data.html" as data %}
+
+<div class="welcome">
+  <div class="welcome__container">
+    <h1 class="welcome__message">Welcome to OLVIGE start page!</h1>
+    <div class="welcome__text">Here is a simple example of nunjucks list:</div>
+    <ul class="welcome__list">
+      {% for i in data.list %}
+      <li>{{ i }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>

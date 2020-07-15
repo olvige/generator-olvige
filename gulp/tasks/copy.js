@@ -3,7 +3,7 @@ import config from '../config.js';
 
 gulp.task('copy:img', () => gulp
   .src([
-    config.src.img + '/**/*.{jpg,png,jpeg,svg,gif}'
+    config.src.img + '/**/*.{jpg,png,jpeg,svg,gif,ico}'
   ])
   .pipe(gulp.dest(config.build.img))
 );
