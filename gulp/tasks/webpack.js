@@ -1,5 +1,5 @@
 import gulp from 'gulp';
-import rename from 'gulp-rename';
+import gulpif from 'gulp-if';
 import uglify from 'gulp-uglify';
 import webpack from 'webpack';
 import webpackStream from 'webpack-stream';
@@ -8,7 +8,7 @@ import config from '../config';
 gulp.task('webpack', () => {
   return gulp.src(config.src.js + '/app.js')
     .pipe(webpackStream({
-      mode: 'production',
+      mode: config.env,
       output: {
         filename: 'app.js',
       },
@@ -35,9 +35,7 @@ gulp.task('webpack', () => {
       //   jquery: 'jQuery'
       // }
     }))
-    .pipe(gulp.dest(config.build.js))
-    .pipe(uglify())
-    .pipe(rename({ suffix: '.min' }))
+    .pipe(gulpif(config.production, uglify()))
     .pipe(gulp.dest(config.build.js));
 });
 

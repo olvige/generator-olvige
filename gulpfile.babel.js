@@ -16,7 +16,30 @@ gulp.task('sass:watch', require('./gulp/tasks/sass').watch(gulp));
 gulp.task('webpack:watch', require('./gulp/tasks/webpack').watch(gulp));
 gulp.task('sprite:watch', require('./gulp/tasks/svg-sprite').watch(gulp));
 
+const setProd = done => {
+  config.setEnv('production');
+  config.logEnv();
+  done();
+}
+
+const setDev = done => {
+  config.setEnv('development');
+  config.logEnv();
+  done();
+}
+
 gulp.task('build', gulp.series(
+  setProd,
+  'clean',
+  'sprite',
+  'sass',
+  'webpack',
+  'nunjucks',
+  'copy'
+));
+
+gulp.task('build:dev', gulp.series(
+  setDev,
   'clean',
   'sprite',
   'sass',
@@ -36,4 +59,4 @@ gulp.task('watch',
 );
 
 
-gulp.task('default', gulp.series(['build', 'server', 'watch']));
+gulp.task('default', gulp.series(['build:dev', 'server', 'watch']));

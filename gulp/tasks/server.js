@@ -7,7 +7,7 @@ const server = browserSync.create();
 gulp.task('server', done => {
   server.init({
     server: {
-       baseDir: config.build.root
+      baseDir: [config.src.root, config.build.root]
     },
     files: [
         config.build.html + '/*.html',
@@ -15,6 +15,10 @@ gulp.task('server', done => {
         config.build.js + '/*.js',
     ],
     notify: false,
+    port: 8080,
+    logLevel: 'info',
+    logConnections: false,
+    logFileChanges: true,
   });
 
   done();
